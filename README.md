@@ -75,4 +75,4 @@ Run the Jupyter notebook(s) to:
 - Data visualization and performance analysis
   
 ## Python libraries:
-pandas, numpy, arch, matplotlib, seaborn, yfinanceThis is the README
+pandas, numpy, arch, matplotlib, seaborn, yfinance
