@@ -1,4 +1,4 @@
-# Delta-Hedging with Black–Scholes vs. GARCH
+# Delta-Hedging with GARCH vs Black–Scholes
 
 ## Overview
 This project investigates the effectiveness of delta-hedging strategies using two approaches:
@@ -9,7 +9,7 @@ The goal is to evaluate how well these models replicate the payoff of synthetic 
 
 ## Data
 - Source: Yahoo Finance (yfinance) daily OHLC data.
-- Tickers: AAPL, TSLA, F, HD, GM, SPY, ^GSPC, VTI, QQQ
+- Tickers: AAPL, TSLA, F, HD, GM, SPY, QQQ
 - Period: 2025-01-01 to 2025-10-11
 - Returns: log returns used for volatility estimation and GARCH fitting.
 
@@ -26,8 +26,10 @@ Execution model includes:
 - Bid–ask spread cost
 - Hysteresis band (to avoid tiny hedge trades)
 - Max inventory limits
+
 Cash account accrues interest at the risk-free rate.
-All hedges are closed at expiry; option payoff realized.
+
+When the hedge is closed at expiry, the option payoff is realized.
 
 ### Outputs Recorded
 For each contract lifecycle:
@@ -36,16 +38,14 @@ For each contract lifecycle:
 - Hedging error = final NAV – payoff
 - Fees paid, turnover (shares traded)
 - Model details (BS window, GARCH p/q, etc.)
-All results collected into a unified DataFrame df_liveish.
+All results collected into the unified DataFrame df_liveish.
 
 ## Key Visualizations
-- Distribution of Hedging Errors – histograms showing bias and variance of BS vs. GARCH.
+- Net P&L density comparison between models.
 - Cumulative Net P&L by Ticker – time series of strategy profitability.
 - Boxplots of Net P&L by Maturity × Strike – sensitivity to contract design.
-- Bar Chart of Fees as % of Gross P&L – highlights drag from transaction costs.
+- Distribution of Fees as % of Gross P&L – highlights drag from transaction costs.
 - Time Series of Hedging Errors – rolling replication error curves.
-- Risk–Return Scatter (Avg P&L vs. Volatility of P&L) – compares model efficiency.
-- Scatter of Turnover vs. Net P&L – links trading intensity to profitability.
 - Heatmap of Avg P&L by (Maturity × Strike Multiplier) – systematic patterns in hedge success.
   
 ## Findings (Illustrative)
@@ -58,11 +58,10 @@ All results collected into a unified DataFrame df_liveish.
 - Extend to intraday data (higher hedge frequency).
 - Add alternative volatility models (EGARCH, Heston).
 - Incorporate real option chain data to compare against market-implied volatilities.
-- Test portfolio-level hedging and capital allocation.
 
 ## How to Run
 Clone repo and install requirements: pip install -r requirements.txt
-Run the Jupyter notebook(s) to:
+Run the Jupyter notebook to:
 - Download data
 - Fit BS and GARCH models
 - Simulate hedges
