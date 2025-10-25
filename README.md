@@ -51,10 +51,9 @@ All results collected into the unified DataFrame df_liveish.
 - Distribution of turnover per contract - which models were the quickest to purchase stocks
   
 ## Findings (Illustrative)
-- BS hedges often show bias when volatility shifts sharply.
-- GARCH hedges adapt better to changing volatility but may suffer higher turnover and costs.
+- GARCH hedges routinely result in higher profit than Black-Scholes hedges.
 - Short-dated, near-the-money options tend to hedge more cleanly.
-- Transaction costs can erase theoretical edge unless carefully managed.
+- Black-Scholes models tend to accumulate more fees than GARCH.
 
 ## Next Steps
 - Extend to intraday data (higher hedge frequency).
