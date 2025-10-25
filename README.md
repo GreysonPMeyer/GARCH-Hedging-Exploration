@@ -47,6 +47,8 @@ All results collected into the unified DataFrame df_liveish.
 - Distribution of Fees as % of Gross P&L – highlights drag from transaction costs.
 - Time Series of Hedging Errors – rolling replication error curves.
 - Heatmap of Avg P&L by (Maturity × Strike Multiplier) – systematic patterns in hedge success.
+- Distribution of hedging erros - shows the bias and variance of Black-Scholes vs GARCH
+- Distribution of turnover per contract - which models were the quickest to purchase stocks
   
 ## Findings (Illustrative)
 - BS hedges often show bias when volatility shifts sharply.
