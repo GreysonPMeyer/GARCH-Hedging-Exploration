@@ -55,10 +55,21 @@ All results collected into the unified DataFrame df_liveish.
 - Short-dated, near-the-money options tend to hedge more cleanly.
 - Black-Scholes models tend to accumulate more fees than GARCH.
 
+## Limitations
+- We generate synthetic call payoffs instead of using real listed option data removing the “market reality” of supply/demand for options
+- We explicitly set the risk-free rate r = 0. While this simplifies formulas, in practice the risk-free rate shifts over time, and even small differences can affect discounting of payoffs or delta values, especially for long-dated options.
+- We define strikes as multiples of S_0 at inception (ATM = 1.0, ITM = 0.9, OTM = 1.1). In real markets strikes are discrete and option chains have irregular availability depending on the underlying. Our method gives systematic ITM/ATM/OTM groupings, but doesn’t reflect how traders pick strikes.
+- We only use around 10 months of data for a couple of tickers. This restricts the robustness of Our findings, especially for volatility models like GARCH, which benefit from longer series to capture volatility regimes. Also, using a short window makes it hard to generalize across bull/bear/sideways markets.
+- The execution model is simplified compared to real-world microstructure. To be more accurate, in the future this project will need to take into account partial fills, order book depth and volatility-driven spread widening.
+- Each option lifecycle is simulated with fixed maturities, when in practice traders roll options or trade across a wide spectrum of expiries. This might bias results toward certain behaviors.
+- The results might be driven by the quirks of our chosen assets, for example TSLA’s extreme volatility & Ford’s stability. Broader coverage of assets could validate the conclusions better.
+
 ## Next Steps
 - Extend to intraday data (higher hedge frequency).
 - Add alternative volatility models (EGARCH, Heston).
 - Incorporate real option chain data to compare against market-implied volatilities.
+- Larger window of data and more assets.
+- Make Execution Model more realistic.
 
 ## How to Run
 Clone repo and install requirements: pip install -r requirements.txt
