@@ -50,7 +50,7 @@ All results collected into the unified DataFrame df_liveish.
 - Distribution of hedging erros - shows the bias and variance of Black-Scholes vs GARCH
 - Distribution of turnover per contract - which models were the quickest to purchase stocks
   
-## Findings (Illustrative)
+## Findings
 - GARCH hedges routinely result in higher profit than Black-Scholes hedges.
 - Short-dated, near-the-money options tend to hedge more cleanly.
 - Black-Scholes models tend to accumulate more fees than GARCH.
